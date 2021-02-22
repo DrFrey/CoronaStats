@@ -40,4 +40,16 @@ class OverviewViewmodel: ViewModel() {
             }
         }
     }
+
+    private val _navigateToSelectedCountry = MutableLiveData<CountryData>()
+    val navigateToSelectedCountry: LiveData<CountryData>
+        get() = _navigateToSelectedCountry
+
+    fun displayCountryDetails(countryData: CountryData) {
+        _navigateToSelectedCountry.value = countryData
+    }
+
+    fun displayCountryDetailsComplete() {
+        _navigateToSelectedCountry.value = null
+    }
 }

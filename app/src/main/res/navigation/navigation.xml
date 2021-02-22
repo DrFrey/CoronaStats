@@ -8,5 +8,17 @@
     <fragment
         android:id="@+id/overviewFragment"
         android:name="com.example.coronastats.overview.OverviewFragment"
-        android:label="OverviewFragment" />
+        android:label="OverviewFragment" >
+        <action
+            android:id="@+id/action_overviewFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.coronastats.details.DetailFragment"
+        android:label="DetailFragment" >
+        <argument
+            android:name="selectedCountry"
+            app:argType="com.example.coronastats.network.CountryData" />
+    </fragment>
 </navigation>

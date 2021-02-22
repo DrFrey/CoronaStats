@@ -1,6 +1,5 @@
 package com.example.coronastats.overview
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
@@ -10,7 +9,8 @@ import com.example.coronastats.R
 import com.example.coronastats.databinding.OverviewItemBinding
 import com.example.coronastats.network.CountryData
 
-class CoronaDataAdapter: androidx.recyclerview.widget.ListAdapter<CountryData, CoronaDataAdapter.ViewHolder>(DiffCallback) {
+class CoronaDataAdapter(private val onClickListener: OnClickListener):
+    androidx.recyclerview.widget.ListAdapter<CountryData, CoronaDataAdapter.ViewHolder>(DiffCallback) {
 
 
     class ViewHolder(private val binding: OverviewItemBinding):  RecyclerView.ViewHolder(binding.root) {
@@ -42,6 +42,13 @@ class CoronaDataAdapter: androidx.recyclerview.widget.ListAdapter<CountryData, C
         else {
             holder.itemView.setBackgroundColor(ResourcesCompat.getColor(holder.itemView.resources, R.color.white, null))
         }
+        holder.itemView.setOnClickListener {
+            onClickListener.clickListener(countryData)
+        }
         holder.bind(countryData)
+    }
+
+    class OnClickListener(val clickListener: (countryData: CountryData) -> Unit) {
+        fun onClick(countryData: CountryData) = clickListener(countryData)
     }
 }
