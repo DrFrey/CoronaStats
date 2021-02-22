@@ -15,11 +15,16 @@ class OverviewViewmodel: ViewModel() {
     val response: LiveData<String>
         get() = _response
 
+    private val _isLoaded = MutableLiveData<Boolean>()
+    val isLoaded: LiveData<Boolean>
+        get() = _isLoaded
+
     private val _stats = MutableLiveData<List<CountryData>>()
     val stats: LiveData<List<CountryData>>
         get() = _stats
 
     init {
+        _isLoaded.value = false
         getCoronaStats()
     }
 
@@ -27,11 +32,12 @@ class OverviewViewmodel: ViewModel() {
         viewModelScope.launch {
             try {
                 _stats.value = CoronaApi.retrofitService.getStatistics().sortedByDescending { it.infected.toInt() }
-                _response.value = "Success: data received"
+                _isLoaded.value = true
             } catch (e: Exception) {
-                _response.value = "Failure: ${e.message}"
+                _isLoaded.value = false
+                _response.value = e.message
+                Log.d("___","Failure: ${e.message}")
             }
-
         }
     }
 }

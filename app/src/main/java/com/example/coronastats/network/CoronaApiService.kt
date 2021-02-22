@@ -1,6 +1,5 @@
 package com.example.coronastats.network
 
-//import com.example.coronastats.CountryJsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -10,8 +9,7 @@ import retrofit2.http.GET
 private const val BASE_URL = "https://api.apify.com/"
 
 private val moshi = Moshi.Builder()
-    //.add(CountryJsonAdapter())
-    .addLast(KotlinJsonAdapterFactory())
+    .add(KotlinJsonAdapterFactory())
     .build()
 
 

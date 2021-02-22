@@ -22,6 +22,7 @@ class OverviewFragment: Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         binding.overviewRecyclerview.adapter = CoronaDataAdapter()
+
         return binding.root
     }
 }

@@ -1,5 +1,6 @@
 package com.example.coronastats.overview
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
@@ -27,7 +28,6 @@ class CoronaDataAdapter: androidx.recyclerview.widget.ListAdapter<CountryData, C
         override fun areContentsTheSame(oldItem: CountryData, newItem: CountryData): Boolean {
             return oldItem == newItem
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
