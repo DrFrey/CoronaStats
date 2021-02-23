@@ -4,10 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.coronastats.details.DetailViewmodel" />
-        <import type="com.blongho.country_data.World"/>
+
+        <import type="com.blongho.country_data.World" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,145 +29,162 @@
         <TextView
             android:id="@+id/country_name"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="400dp"
             android:background="#ddffffff"
             android:fontFamily="@font/roboto_mono"
             android:gravity="end"
-            android:paddingStart="50dp"
+            android:paddingStart="100dp"
             android:paddingTop="100dp"
-            android:paddingEnd="50dp"
+            android:paddingEnd="20dp"
             android:text="@{viewModel.selectedCountry.country}"
             android:textAllCaps="true"
             android:textSize="36sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/country_data"
+            app:layout_constraintBottom_toTopOf="@id/divider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Country Name" />
 
-        <TableLayout
-            android:id="@+id/country_data"
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="#000000"
+            app:layout_constraintBottom_toTopOf="@id/scrollview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/country_name" />
+
+        <ScrollView
+            android:id="@+id/scrollview"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="#ddffffff"
-            android:paddingEnd="6dp"
-            android:stretchColumns="1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/country_name">
+            app:layout_constraintTop_toBottomOf="@id/divider"
+            android:background="#ddffffff"
+            android:paddingTop="20dp"
+            android:paddingEnd="6dp">
 
-            <TableRow
+            <TableLayout
+                android:id="@+id/country_data"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:weightSum="2">
+                android:layout_height="wrap_content"
+                android:stretchColumns="1">
 
-                <TextView
-                    style="@style/overview_textview_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/infected" />
 
-                <TextView
-                    style="@style/overview_textview_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:formattedNumber="@{viewModel.selectedCountry.infected}"
-                    tools:text="Infected" />
-            </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:weightSum="2">
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                    <TextView
+                        style="@style/overview_textview_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/infected" />
 
-                <TextView
-                    style="@style/overview_textview_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/recovered" />
+                    <TextView
+                        style="@style/overview_textview_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:formattedNumber="@{viewModel.selectedCountry.infected}"
+                        tools:text="Infected" />
+                </TableRow>
 
-                <TextView
-                    style="@style/overview_textview_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:formattedNumber="@{viewModel.selectedCountry.recovered}"
-                    tools:text="Recovered" />
-            </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                    <TextView
+                        style="@style/overview_textview_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/recovered" />
 
-                <TextView
-                    style="@style/overview_textview_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/deceased" />
+                    <TextView
+                        style="@style/overview_textview_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:formattedNumber="@{viewModel.selectedCountry.recovered}"
+                        tools:text="Recovered" />
+                </TableRow>
 
-                <TextView
-                    style="@style/overview_textview_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:formattedNumber="@{viewModel.selectedCountry.deceased}"
-                    tools:text="Deceased" />
-            </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                    <TextView
+                        style="@style/overview_textview_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/deceased" />
 
-                <TextView
-                    style="@style/overview_textview_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tested" />
+                    <TextView
+                        style="@style/overview_textview_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:formattedNumber="@{viewModel.selectedCountry.deceased}"
+                        tools:text="Deceased" />
+                </TableRow>
 
-                <TextView
-                    style="@style/overview_textview_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:formattedNumber="@{viewModel.selectedCountry.tested}"
-                    tools:text="Tested" />
-            </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                    <TextView
+                        style="@style/overview_textview_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tested" />
 
-                <TextView
-                    style="@style/overview_textview_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/source_url" />
+                    <TextView
+                        style="@style/overview_textview_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:formattedNumber="@{viewModel.selectedCountry.tested}"
+                        tools:text="Tested" />
+                </TableRow>
 
-                <TextView
-                    style="@style/overview_textview_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autoLink="web"
-                    app:emptyLineAdapter="@{viewModel.selectedCountry.sourceUrl}"
-                    tools:text="Source URL" />
-            </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                    <TextView
+                        style="@style/overview_textview_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/source_url" />
 
-                <TextView
-                    style="@style/overview_textview_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/last_updated" />
+                    <TextView
+                        style="@style/overview_textview_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autoLink="web"
+                        app:emptyLineAdapter="@{viewModel.selectedCountry.sourceUrl}"
+                        tools:text="Source URL" />
+                </TableRow>
 
-                <TextView
-                    style="@style/overview_textview_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{viewModel.selectedCountry.lastUpdatedApify}"
-                    tools:text="Last updated" />
-            </TableRow>
-        </TableLayout>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
+                    <TextView
+                        style="@style/overview_textview_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/last_updated" />
+
+                    <TextView
+                        style="@style/overview_textview_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.selectedCountry.lastUpdatedApify}"
+                        tools:text="Last updated" />
+                </TableRow>
+            </TableLayout>
+        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
