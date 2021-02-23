@@ -17,11 +17,23 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<CountryData>?) {
 @SuppressLint("NewApi")
 @BindingAdapter("formattedNumber")
 fun setFormattedNumber(textView: TextView, number: String?) {
-    try {
-     val formattedNumber = NumberFormat.getInstance().format(number?.toInt())
-        textView.text = formattedNumber
-    } catch (e: Exception) {
-        textView.text = number
+    if (number == null) {
+        textView.text = "NA"
+    } else {
+        try {
+            val formattedNumber = NumberFormat.getInstance().format(number.toInt())
+            textView.text = formattedNumber
+        } catch (e: Exception) {
+            textView.text = number
+        }
     }
 }
 
+@BindingAdapter("emptyLineAdapter")
+fun setCorrectStringValue(textView: TextView, value: String?) {
+    if (value != null) {
+        textView.text = value
+    } else {
+        textView.text = "NA"
+    }
+}

@@ -18,13 +18,13 @@
             android:id="@+id/country_name"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="50dp"
             android:fontFamily="@font/roboto_mono"
             android:gravity="end"
-            android:text=""
+            android:paddingTop="50dp"
+            android:paddingEnd="50dp"
+            android:text="@{viewModel.selectedCountry.country}"
             android:textAllCaps="true"
-            android:textSize="18sp"
+            android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/country_data"
             app:layout_constraintEnd_toEndOf="parent"
@@ -34,10 +34,10 @@
 
         <TableLayout
             android:id="@+id/country_data"
-            android:stretchColumns="1"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="20dp"
+            android:stretchColumns="1"
+            android:paddingEnd="6dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,13 +49,16 @@
                 android:weightSum="2">
 
                 <TextView
+                    style="@style/overview_textview_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/infected" />
 
                 <TextView
+                    style="@style/overview_textview_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:formattedNumber="@{viewModel.selectedCountry.infected}"
                     tools:text="Infected" />
             </TableRow>
 
@@ -64,13 +67,16 @@
                 android:layout_height="match_parent">
 
                 <TextView
+                    style="@style/overview_textview_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/recovered" />
 
                 <TextView
+                    style="@style/overview_textview_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:formattedNumber="@{viewModel.selectedCountry.recovered}"
                     tools:text="Recovered" />
             </TableRow>
 
@@ -79,13 +85,16 @@
                 android:layout_height="match_parent">
 
                 <TextView
+                    style="@style/overview_textview_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/deceased" />
 
                 <TextView
+                    style="@style/overview_textview_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:formattedNumber="@{viewModel.selectedCountry.deceased}"
                     tools:text="Deceased" />
             </TableRow>
 
@@ -94,13 +103,16 @@
                 android:layout_height="match_parent">
 
                 <TextView
+                    style="@style/overview_textview_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/tested" />
 
                 <TextView
+                    style="@style/overview_textview_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:formattedNumber="@{viewModel.selectedCountry.tested}"
                     tools:text="Tested" />
             </TableRow>
 
@@ -109,43 +121,17 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/more_data" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="More data" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/history_data" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="History data" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
+                    style="@style/overview_textview_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/source_url" />
 
                 <TextView
+                    style="@style/overview_textview_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:autoLink="web"
+                    app:emptyLineAdapter="@{viewModel.selectedCountry.sourceUrl}"
                     tools:text="Source URL" />
             </TableRow>
 
@@ -154,13 +140,16 @@
                 android:layout_height="match_parent">
 
                 <TextView
+                    style="@style/overview_textview_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/last_updated" />
 
                 <TextView
+                    style="@style/overview_textview_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.selectedCountry.lastUpdatedApify}"
                     tools:text="Last updated" />
             </TableRow>
         </TableLayout>
