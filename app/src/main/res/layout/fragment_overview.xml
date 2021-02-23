@@ -18,7 +18,9 @@
             android:id="@+id/heading"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:divider="@android:drawable/divider_horizontal_bright"
             android:orientation="horizontal"
+            android:showDividers="middle"
             android:weightSum="4"
             app:layout_constraintBottom_toTopOf="@+id/overview_recyclerview"
             app:layout_constraintEnd_toEndOf="parent"
@@ -56,7 +58,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/deceased"/>
+                android:text="@string/deceased" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView

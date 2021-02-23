@@ -7,24 +7,36 @@
         <variable
             name="viewModel"
             type="com.example.coronastats.details.DetailViewmodel" />
+        <import type="com.blongho.country_data.World"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:src="@{viewModel.countryFlag}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/country_name"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="#ddffffff"
             android:fontFamily="@font/roboto_mono"
             android:gravity="end"
-            android:paddingTop="50dp"
+            android:paddingStart="50dp"
+            android:paddingTop="100dp"
             android:paddingEnd="50dp"
             android:text="@{viewModel.selectedCountry.country}"
             android:textAllCaps="true"
-            android:textSize="30sp"
+            android:textSize="36sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/country_data"
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,8 +48,9 @@
             android:id="@+id/country_data"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:stretchColumns="1"
+            android:background="#ddffffff"
             android:paddingEnd="6dp"
+            android:stretchColumns="1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
