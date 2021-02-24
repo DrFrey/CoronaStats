@@ -1,12 +1,15 @@
 package com.example.coronastats
 
-import android.annotation.SuppressLint
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coronastats.network.CountryData
 import com.example.coronastats.overview.CoronaDataAdapter
 import java.text.NumberFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
+import java.util.*
 
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<CountryData>?) {
@@ -14,7 +17,6 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<CountryData>?) {
     adapter.submitList(data)
 }
 
-@SuppressLint("NewApi")
 @BindingAdapter("formattedNumber")
 fun setFormattedNumber(textView: TextView, number: String?) {
     if (number == null) {
@@ -35,5 +37,16 @@ fun setCorrectStringValue(textView: TextView, value: String?) {
         textView.text = value
     } else {
         textView.text = "NA"
+    }
+}
+
+@BindingAdapter("formattedDateTime")
+fun setFormattedDateTime(textView: TextView, dateString: String?) {
+    try {
+        val inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH)
+        val inputDate = LocalDateTime.parse(dateString, inputFormatter)
+        textView.text = inputDate.format((DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG, FormatStyle.SHORT)))
+    } catch (e: Exception) {
+        textView.text = dateString
     }
 }

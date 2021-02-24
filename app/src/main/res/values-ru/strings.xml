@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CoronaStats</string>
+    <string name="loading">Загрузка...</string>
+    <string name="country_name">Страна</string>
+    <string name="infected">Заражено</string>
+    <string name="recovered">Здоровы</string>
+    <string name="deceased">Смертей</string>
+    <string name="tested">Тестов</string>
+    <string name="more_data">Доп. данные</string>
+    <string name="history_data">Ист. данные</string>
+    <string name="source_url">Источник</string>
+    <string name="last_updated">Обновлено</string>
+</resources>
