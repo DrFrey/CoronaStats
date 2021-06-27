@@ -13,11 +13,10 @@ class DetailFragment: Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val application = requireNotNull(activity).application
+    ): View {
         val binding = FragmentDetailBinding.inflate(inflater)
         val countryData = DetailFragmentArgs.fromBundle(requireArguments()).selectedCountry
-        val viewModelFactory = DetailViewmodelFactory(countryData, application)
+        val viewModelFactory = DetailViewmodelFactory(countryData)
         binding.viewModel = ViewModelProvider(this, viewModelFactory).get(DetailViewmodel::class.java)
         binding.lifecycleOwner = this
         return binding.root

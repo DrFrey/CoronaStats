@@ -2,20 +2,12 @@ package com.example.coronastats
 
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.RecyclerView
-import com.example.coronastats.network.CountryData
-import com.example.coronastats.overview.CoronaDataAdapter
 import java.text.NumberFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.util.*
 
-@BindingAdapter("listData")
-fun bindRecyclerView(recyclerView: RecyclerView, data: List<CountryData>?) {
-    val adapter = recyclerView.adapter as CoronaDataAdapter
-    adapter.submitList(data)
-}
 
 @BindingAdapter("formattedNumber")
 fun setFormattedNumber(textView: TextView, number: String?) {

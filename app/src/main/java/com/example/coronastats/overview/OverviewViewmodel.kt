@@ -28,7 +28,7 @@ class OverviewViewmodel: ViewModel() {
         getCoronaStats()
     }
 
-    private fun getCoronaStats() {
+    fun getCoronaStats() {
         viewModelScope.launch {
             try {
                 _stats.value = CoronaApi.retrofitService.getStatistics().sortedByDescending { it.infected.toInt() }
@@ -39,17 +39,5 @@ class OverviewViewmodel: ViewModel() {
                 Log.d("___","Failure: ${e.message}")
             }
         }
-    }
-
-    private val _navigateToSelectedCountry = MutableLiveData<CountryData>()
-    val navigateToSelectedCountry: LiveData<CountryData>
-        get() = _navigateToSelectedCountry
-
-    fun displayCountryDetails(countryData: CountryData) {
-        _navigateToSelectedCountry.value = countryData
-    }
-
-    fun displayCountryDetailsComplete() {
-        _navigateToSelectedCountry.value = null
     }
 }
