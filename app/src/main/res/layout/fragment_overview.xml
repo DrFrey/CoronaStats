@@ -24,6 +24,7 @@
             android:orientation="horizontal"
             android:showDividers="middle"
             android:weightSum="4"
+            android:background="?colorSecondaryVariant"
             app:layout_constraintBottom_toTopOf="@+id/swipe_refresh_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -18,7 +18,7 @@
             android:id="@+id/country_name"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="#ddffffff"
+            android:background="?colorSecondary"
             android:fontFamily="@font/roboto_mono"
             android:gravity="end"
             android:paddingStart="100dp"
@@ -28,6 +28,7 @@
             android:textAllCaps="true"
             android:textSize="36sp"
             android:textStyle="bold"
+            android:textColor="?colorOnSecondary"
             app:layout_constraintBottom_toTopOf="@id/divider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +53,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/divider"
-            android:background="#ddffffff"
+            android:background="?colorSecondary"
             android:paddingTop="20dp"
             android:paddingEnd="6dp">
 

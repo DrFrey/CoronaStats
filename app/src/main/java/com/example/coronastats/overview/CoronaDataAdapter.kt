@@ -2,7 +2,7 @@ package com.example.coronastats.overview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.res.ResourcesCompat
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -54,19 +54,11 @@ class CoronaDataAdapter: ListAdapter<CountryData, CoronaDataAdapter.ViewHolder>(
         val countryData = getItem(position)
         if (position % 2 == 0) {
             holder.itemView.setBackgroundColor(
-                ResourcesCompat.getColor(
-                    holder.itemView.resources,
-                    R.color.blue_50,
-                    null
-                )
+            ContextCompat.getColor(holder.itemView.context, R.color.design_default_color_secondary_variant)
             )
         } else {
             holder.itemView.setBackgroundColor(
-                ResourcesCompat.getColor(
-                    holder.itemView.resources,
-                    R.color.white,
-                    null
-                )
+                ContextCompat.getColor(holder.itemView.context, R.color.design_default_color_secondary)
             )
         }
         holder.bind(countryData)
